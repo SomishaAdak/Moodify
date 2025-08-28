@@ -1,0 +1,129 @@
+/* Global body and container styles */
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #1db954, #191414);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+}
+
+/* Auth buttons container */
+.auth button {
+  margin: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 30px;
+  background-color: #1db954;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.auth button:hover {
+  background-color: #17a44c;
+}
+
+/* Form container styling */
+.form-container {
+  background-color: #282828;
+  padding: 30px;
+  border-radius: 15px;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  margin: 20px 0;
+}
+
+/* Form heading */
+.form-container h2 {
+  margin-bottom: 20px;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* Input fields */
+.form-container input {
+  display: block;
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border-radius: 30px;
+  border: none;
+  font-size: 16px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+/* Submit and Back buttons */
+.form-container button[type="submit"],
+.back-btn {
+  background-color: #1db954;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  font-size: 16px;
+  border-radius: 30px;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.back-btn {
+  background-color: #555;
+  margin-top: 10px;
+}
+
+.form-container button[type="submit"]:hover,
+.back-btn:hover {
+  background-color: #17a44c;
+}
+
+.back-btn:hover {
+  background-color: #444;
+}
+.password-input-wrapper {
+  position: relative;
+  width: 100%;
+  margin-bottom: 15px;
+}
+.password-input {
+  width: 100%;
+  padding: 12px 60px 12px 15px; /* space on right for button */
+  border-radius: 30px;
+  border: none;
+  font-size: 16px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.toggle-password-btn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: #1db954;
+  font-weight: 700;
+  cursor: pointer;
+  user-select: none;
+  font-size: 14px;
+  padding: 2px 8px;
+  border-radius: 12px;
+  transition: background-color 0.3s ease;
+}
+
+.toggle-password-btn:hover {
+  background-color: rgba(29, 185, 84, 0.3);
+}
