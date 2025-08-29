@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Questionnaire from './Questionnaire';
 import '../style.css';
 
 const PasswordInput = ({ placeholder, required }) => {
@@ -23,37 +24,39 @@ const PasswordInput = ({ placeholder, required }) => {
   );
 };
 
-const LoginForm = ({ onBack }) => {
+const LoginForm = ({ onBack, onAuthSuccess }) => {
   const handleSubmit = e => {
     e.preventDefault();
-    alert('Login submitted!');
+    alert('Login successful!');
+    onAuthSuccess();
   };
   return (
-    <div className="form-container">
+    <div className="form-container fade-in">
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
         <input type="email" placeholder="Email" required />
         <PasswordInput placeholder="Password" required />
-        <button type="submit">Login</button>
+        <button type="submit" className="main-btn">Login</button>
       </form>
       <button className="back-btn" onClick={onBack}>Back</button>
     </div>
   );
 };
 
-const SignupForm = ({ onBack }) => {
+const SignupForm = ({ onBack, onAuthSuccess }) => {
   const handleSubmit = e => {
     e.preventDefault();
-    alert('Signup submitted!');
+    alert('Signup successful!');
+    onAuthSuccess();
   };
   return (
-    <div className="form-container">
+    <div className="form-container fade-in">
       <h2>Sign Up</h2>
       <form onSubmit={handleSubmit}>
         <input type="text" placeholder="Username" required />
         <input type="email" placeholder="Email" required />
         <PasswordInput placeholder="Password" required />
-        <button type="submit">Sign Up</button>
+        <button type="submit" className="main-btn">Sign Up</button>
       </form>
       <button className="back-btn" onClick={onBack}>Back</button>
     </div>
@@ -61,19 +64,39 @@ const SignupForm = ({ onBack }) => {
 };
 
 const LoginSignup = () => {
-  const [view, setView] = useState('buttons'); // 'buttons', 'login', 'signup'
+  const [view, setView] = useState('buttons'); // 'buttons', 'login', 'signup', 'questionnaire'
+
+  const handleAuthSuccess = () => {
+    setView('questionnaire');
+  };
+
+  const handleQuestionnaireComplete = () => {
+    alert('Thank you for completing the questionnaire!');
+    setView('buttons');
+  };
 
   return (
-    <div className="container">
-      <h1>Moodify</h1>
-      {view === 'buttons' && (
-        <div className="auth">
-          <button onClick={() => setView('login')}>Login</button>
-          <button onClick={() => setView('signup')}>Sign Up</button>
-        </div>
-      )}
-      {view === 'login' && <LoginForm onBack={() => setView('buttons')} />}
-      {view === 'signup' && <SignupForm onBack={() => setView('buttons')} />}
+    <div className="background-animated-gradient">
+      <div className="centered-container">
+        <h1 className="main-title">Moodify</h1>
+
+        {view === 'buttons' && (
+          <div className="auth fade-in">
+            <button className="main-btn" onClick={() => setView('login')}>Login</button>
+            <button className="main-btn" onClick={() => setView('signup')}>Sign Up</button>
+          </div>
+        )}
+
+        {view === 'login' &&
+          <LoginForm onBack={() => setView('buttons')} onAuthSuccess={handleAuthSuccess} />
+        }
+        {view === 'signup' &&
+          <SignupForm onBack={() => setView('buttons')} onAuthSuccess={handleAuthSuccess} />
+        }
+        {view === 'questionnaire' &&
+          <Questionnaire onComplete={handleQuestionnaireComplete} />
+        }
+      </div>
     </div>
   );
 };
